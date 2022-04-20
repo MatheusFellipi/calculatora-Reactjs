@@ -8,7 +8,7 @@ export const theme: DefaultTheme = {
       white: '#ffffff'
     },
     primary: {
-      main: '#726a95',
+      main: '#969293',
       contrastText: '#ffffff'
     },
     secondary: {

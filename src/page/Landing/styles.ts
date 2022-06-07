@@ -8,25 +8,33 @@ export const Box = styled.div`
   height: 100vh;
 
   .calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     background: ${(props) => props.theme.palette.common.black};
     border-radius: 15px;
-    width: 540px;
+    width: 490px;
 
     .display {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       color: white;
+      width: 100%;
       height: 100px;
-      margin: 1.5rem 0rem 0.5rem 0.8rem;
-      p {
+      margin: 2rem 0rem 2rem 0.8rem;
+       p {
         width: 96%;
-        padding: 1rem;
-        height: 100%;
         font-size: 30px;
         text-align: end;
-        padding: 1.5rem 1rem 0 0;
+        padding: 0rem 1rem 0 0;
         border-radius: 10px;
+        :last-child{
+          font-size: 3rem;
+        }
       }
     }
 
@@ -44,7 +52,7 @@ export const Box = styled.div`
         display: flex;
         justify-content: end;
         align-items: flex-end;
-        padding-right: 1rem;
+        padding-right: 0.1rem;
         width: 100%;
       }
 

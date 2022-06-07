@@ -4,38 +4,75 @@ import { Buttons } from "../../components/Buttons";
 import { Box } from "./styles";
 
 export default function Index() {
-  const [display, setDisplay] = useState<number>(0);
+  const [display, setDisplay] = useState<string>("0");
+  const [result, setResult] = useState<number>(-1);
   const [operator, setOperator] = useState<string>("");
 
   const number = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
 
   const handleNumber = (e: MouseEvent<HTMLButtonElement>) => {
     const value = e.currentTarget.value;
-    setDisplay(parseFloat(display + value));
-    console.log(value);
+    if (display === "0") {
+      setDisplay(value);
+    } else {
+      setDisplay(display + value);
+    }
   };
 
   const handleOperator = (e: MouseEvent<HTMLButtonElement>) => {
     const value = e.currentTarget.value;
-    setOperator(value);
-    console.log(value);
+
+    if (operator === "") {
+      setOperator(value);
+      setDisplay(display + " " + value + " ");
+    } else {
+      const displayNew = display.replace(operator, value);
+      setOperator(value);
+      setDisplay(displayNew);
+    }
   };
 
-  const handleCalculator = () => {};
+  const handleCalculator = () => {
+    const str = display.split(operator);
+
+    if (operator === "%") {
+      setResult(parseFloat(str[0].trim()) % parseFloat(str[1].trim()));
+    }
+    if (operator === "/") {
+      setResult(parseFloat(str[0].trim()) / parseFloat(str[1].trim()));
+    }
+    if (operator === "*") {
+      setResult(parseFloat(str[0].trim()) * parseFloat(str[1].trim()));
+    }
+    if (operator === "-") {
+      setResult(parseFloat(str[0].trim()) - parseFloat(str[1].trim()));
+    }
+    if (operator === "+") {
+      setResult(parseFloat(str[0].trim()) + parseFloat(str[1].trim()));
+    }
+  };
+
+  const handleLimpar = () => {
+    setOperator("");
+    setDisplay("0");
+    setResult(0);
+  };
 
   return (
     <Box>
       <div className="calculator">
         <div className="display">
           <p>{display}</p>
+          {result >= 0 && <p>{result}</p>}
         </div>
+
         <div className="buttons-container">
           <section className="buttons">
             <div className="btn-operator">
               <Buttons
                 name="AC"
                 type="button"
-                handleClick={handleOperator}
+                handleClick={handleLimpar}
                 value={"AC"}
               />
               <Buttons
@@ -48,14 +85,14 @@ export default function Index() {
                 type="button"
                 name="%"
                 handleClick={handleOperator}
-                value={"percentage"}
+                value={"%"}
               />
 
               <Buttons
                 type="button"
                 name="/"
                 handleClick={handleOperator}
-                value={"division"}
+                value={"/"}
               />
             </div>
           </section>
@@ -76,7 +113,7 @@ export default function Index() {
                 visibility={"hidden"}
                 type="button"
                 handleClick={handleOperator}
-                value={"multiple"}
+                value={"hide"}
               />
             </div>
 
@@ -85,20 +122,20 @@ export default function Index() {
                 name="*"
                 type="button"
                 handleClick={handleOperator}
-                value={"multiple"}
+                value={"*"}
               />
 
               <Buttons
                 name="-"
                 type="button"
                 handleClick={handleOperator}
-                value={"subtraction"}
+                value={"-"}
               />
               <Buttons
                 name="+"
                 type="button"
                 handleClick={handleOperator}
-                value={"soma"}
+                value={"+"}
               />
 
               <Buttons

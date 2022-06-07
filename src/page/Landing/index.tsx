@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { MouseEvent } from "react";
 import { Buttons } from "../../components/Buttons";
 import { Box } from "./styles";
 
@@ -49,12 +48,6 @@ export default function Index() {
           <section className="buttons">
             <div className="btn-operator">
               <Buttons name="AC" type="button" handleClick={handleLimpar} />
-
-              <Buttons
-                type="button"
-                name="/"
-                handleClick={() => handleOperator("/")}
-              />
             </div>
           </section>
 
@@ -68,22 +61,32 @@ export default function Index() {
                   handleClick={() => handleInsertNum(num.toString())}
                 />
               ))}
-              <Buttons name="hide" visibility={"hidden"} type="button" />
+              <Buttons name="." type="button" />
             </div>
 
             <div className="operator-number">
               <Buttons
+                color="#fff"
+                type="button"
+                name="/"
+                handleClick={() => handleOperator("/")}
+              />
+
+              <Buttons
+                color="#fff"
                 name="*"
                 type="button"
                 handleClick={() => handleOperator("*")}
               />
 
               <Buttons
+                color="#fff"
                 name="-"
                 type="button"
                 handleClick={() => handleOperator("-")}
               />
               <Buttons
+                color="#fff"
                 name="+"
                 type="button"
                 handleClick={() => handleOperator("+")}

@@ -2,25 +2,23 @@ import { useState } from "react";
 import { MouseEvent } from "react";
 import { Buttons } from "../../components/Buttons";
 import { Box } from "./styles";
+
 import * as math from "mathjs";
 
 const number = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
-const operacoes = ["*", "/", "+", ".", "-"];
+const operator = ["*", "/", "+", ".", "-"];
 
 export default function Index() {
   const [input, setInput] = useState("");
-  const [display, setDisplay] = useState<string>("0");
-  const [result, setResult] = useState<number>(-1);
-  const [operator, setOperator] = useState<string>("");
 
-  function hadleInsertNum(val: string) {
+  function handleInsertNum(val: string) {
     setInput(input + val);
   }
 
-  function handleOperator2(val: string) {
+  function handleOperator(val: string) {
     if (
       input === "" ||
-      (operacoes.includes(input[input.length - 1]) && operacoes.includes(val))
+      (operator.includes(input[input.length - 1]) && operator.includes(val))
     ) {
       return;
     } else {
@@ -28,89 +26,34 @@ export default function Index() {
     }
   }
 
-  const handleNumber = (e: MouseEvent<HTMLButtonElement>) => {
-    const value = e.currentTarget.value;
-    if (display === "0") {
-      setDisplay(value);
-    } else {
-      setDisplay(display + value);
-    }
-  };
-
-  const handleOperator = (e: MouseEvent<HTMLButtonElement>) => {
-    const value = e.currentTarget.value;
-
-    if (operator === "") {
-      setOperator(value);
-      setDisplay(display + " " + value + " ");
-    } else {
-      const displayNew = display.replace(operator, value);
-      setOperator(value);
-      setDisplay(displayNew);
-    }
-  };
-
   const handleCalculator = () => {
-    const str = display.split(operator);
-
-    if (operator === "%") {
-      setResult(parseFloat(str[0].trim()) % parseFloat(str[1].trim()));
-    }
-    if (operator === "/") {
-      setResult(parseFloat(str[0].trim()) / parseFloat(str[1].trim()));
-    }
-    if (operator === "*") {
-      setResult(parseFloat(str[0].trim()) * parseFloat(str[1].trim()));
-    }
-    if (operator === "-") {
-      setResult(parseFloat(str[0].trim()) - parseFloat(str[1].trim()));
-    }
-    if (operator === "+") {
-      setResult(parseFloat(str[0].trim()) + parseFloat(str[1].trim()));
+    if (input === "" || operator.includes(input[input.length - 1])) {
+      return input;
+    } else {
+      setInput(math.evaluate(input));
     }
   };
 
   const handleLimpar = () => {
-    setOperator("");
-    setDisplay("0");
-    setResult(0);
+    setInput("");
   };
 
   return (
     <Box>
       <div className="calculator">
         <div className="display">
-          <p>{display}</p>
-          {result >= 0 && <p>{result}</p>}
+          <p>{input}</p>
         </div>
 
         <div className="buttons-container">
           <section className="buttons">
             <div className="btn-operator">
-              <Buttons
-                name="AC"
-                type="button"
-                handleClick={handleLimpar}
-                value={"AC"}
-              />
-              <Buttons
-                type="button"
-                handleClick={handleOperator}
-                name="+/-"
-                value={"+/-"}
-              />
-              <Buttons
-                type="button"
-                name="%"
-                handleClick={handleOperator}
-                value={"%"}
-              />
+              <Buttons name="AC" type="button" handleClick={handleLimpar} />
 
               <Buttons
                 type="button"
                 name="/"
-                handleClick={handleOperator}
-                value={"/"}
+                handleClick={() => handleOperator("/")}
               />
             </div>
           </section>
@@ -122,46 +65,31 @@ export default function Index() {
                   key={num}
                   type="button"
                   name={num.toString()}
-                  handleClick={handleNumber}
-                  value={num}
+                  handleClick={() => handleInsertNum(num.toString())}
                 />
               ))}
-              <Buttons
-                name="hide"
-                visibility={"hidden"}
-                type="button"
-                handleClick={handleOperator}
-                value={"hide"}
-              />
+              <Buttons name="hide" visibility={"hidden"} type="button" />
             </div>
 
             <div className="operator-number">
               <Buttons
                 name="*"
                 type="button"
-                handleClick={handleOperator}
-                value={"*"}
+                handleClick={() => handleOperator("*")}
               />
 
               <Buttons
                 name="-"
                 type="button"
-                handleClick={handleOperator}
-                value={"-"}
+                handleClick={() => handleOperator("-")}
               />
               <Buttons
                 name="+"
                 type="button"
-                handleClick={handleOperator}
-                value={"+"}
+                handleClick={() => handleOperator("+")}
               />
 
-              <Buttons
-                name="="
-                value={"="}
-                type="button"
-                handleClick={handleCalculator}
-              />
+              <Buttons name="=" type="button" handleClick={handleCalculator} />
             </div>
           </section>
         </div>

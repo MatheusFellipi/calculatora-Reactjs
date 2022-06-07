@@ -2,13 +2,16 @@ import { useState } from "react";
 import { MouseEvent } from "react";
 import { Buttons } from "../../components/Buttons";
 import { Box } from "./styles";
+import * as math from "mathjs";
+
+const number = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
+const operacoes = ["*", "/", "+", ".", "-"];
 
 export default function Index() {
+  const [input, setInput] = useState("");
   const [display, setDisplay] = useState<string>("0");
   const [result, setResult] = useState<number>(-1);
   const [operator, setOperator] = useState<string>("");
-
-  const number = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
 
   const handleNumber = (e: MouseEvent<HTMLButtonElement>) => {
     const value = e.currentTarget.value;

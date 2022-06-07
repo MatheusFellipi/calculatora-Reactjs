@@ -7,6 +7,7 @@ interface IPropsButtons {
   value: string | number;
   handleClick: (e: MouseEvent<HTMLButtonElement>) => void;
   visibility?: string;
+  color?: string;
 }
 
 export function Buttons({

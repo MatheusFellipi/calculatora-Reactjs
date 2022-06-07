@@ -13,6 +13,17 @@ export default function Index() {
   const [result, setResult] = useState<number>(-1);
   const [operator, setOperator] = useState<string>("");
 
+  function handleOperator2(val: string) {
+    if (
+      input === "" ||
+      (operacoes.includes(input[input.length - 1]) && operacoes.includes(val))
+    ) {
+      return;
+    } else {
+      setInput(input + val);
+    }
+  }
+
   const handleNumber = (e: MouseEvent<HTMLButtonElement>) => {
     const value = e.currentTarget.value;
     if (display === "0") {

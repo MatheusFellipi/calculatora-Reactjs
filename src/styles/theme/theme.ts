@@ -1,19 +1,19 @@
-import { DefaultTheme } from 'styled-components'
+import { DefaultTheme } from "styled-components";
 
 export const theme: DefaultTheme = {
-  borderRadius: '4px',
+  borderRadius: "4px",
   palette: {
     common: {
-      black: '#222831',
-      white: '#ffffff'
+      black: "#000",
+      white: "#ffffff",
     },
     primary: {
-      main: '#969293',
-      contrastText: '#ffffff'
+      main: "#333333",
+      contrastText: "#CCCCCC",
     },
     secondary: {
-      main: '#709fb0',
-      contrastText: '#ffffff'
-    }
-  }
-}
+      main: "#709fb0",
+      contrastText: "#ffffff",
+    },
+  },
+};

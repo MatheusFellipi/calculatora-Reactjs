@@ -13,6 +13,10 @@ export default function Index() {
   const [result, setResult] = useState<number>(-1);
   const [operator, setOperator] = useState<string>("");
 
+  function hadleInsertNum(val: string) {
+    setInput(input + val);
+  }
+
   function handleOperator2(val: string) {
     if (
       input === "" ||

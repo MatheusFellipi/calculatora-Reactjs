@@ -1,11 +1,11 @@
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styles/Global";
-import { theme } from "./styles/theme/theme";
+import { dark } from "./styles/theme/dark";
 import Landing from "./page/Landing";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={dark}>
       <GlobalStyle />
       <Landing />
     </ThemeProvider>

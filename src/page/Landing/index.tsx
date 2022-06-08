@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Buttons } from "../../components/Buttons";
-import { Box } from "./styles";
+import { ButtonsContainer, Calculador, Container, Display } from "./styles";
 
 import * as math from "mathjs";
 
@@ -9,6 +9,7 @@ const operator = ["*", "/", "+", ".", "-"];
 
 export default function Index() {
   const [input, setInput] = useState("");
+  const [result, setResult] = useState("");
 
   function handleInsertNum(val: string) {
     setInput(input + val);
@@ -29,26 +30,33 @@ export default function Index() {
     if (input === "" || operator.includes(input[input.length - 1])) {
       return input;
     } else {
-      setInput(math.evaluate(input));
+      setResult(math.evaluate(input));
     }
   };
 
   const handleLimpar = () => {
     setInput("");
+    setResult("");
   };
 
   return (
-    <Box>
-      <div className="calculator">
-        <div className="display">
+    <Container>
+      <Calculador>
+        <Display>
           <p>{input}</p>
-        </div>
+          {result !== "" ? <p className="result">{result}</p> : ""}
+        </Display>
 
-        <div className="buttons-container">
+        <ButtonsContainer>
           <section className="buttons">
-            <div className="btn-operator">
-              <Buttons name="AC" type="button" handleClick={handleLimpar} />
-            </div>
+            <Buttons name="AC" type="button" handleClick={handleLimpar} />
+
+            <Buttons
+              color="#fff"
+              type="button"
+              name="/"
+              handleClick={() => handleOperator("/")}
+            />
           </section>
 
           <section className="buttons">
@@ -63,15 +71,7 @@ export default function Index() {
               ))}
               <Buttons name="." type="button" />
             </div>
-
             <div className="operator-number">
-              <Buttons
-                color="#fff"
-                type="button"
-                name="/"
-                handleClick={() => handleOperator("/")}
-              />
-
               <Buttons
                 color="#fff"
                 name="*"
@@ -95,8 +95,8 @@ export default function Index() {
               <Buttons name="=" type="button" handleClick={handleCalculator} />
             </div>
           </section>
-        </div>
-      </div>
-    </Box>
+        </ButtonsContainer>
+      </Calculador>
+    </Container>
   );
 }

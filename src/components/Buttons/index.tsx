@@ -35,15 +35,15 @@ type ButtonsProps = {
 };
 
 const Container = styled.div`
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 5rem;
+  height: 5rem;
+  margin: 0.5rem;
 `;
 
 const Button = styled.button<ButtonsProps>`
   border-radius: 10px;
   width: 100%;
   height: 100%;
-  border-radius: 10rem;
   border: none;
   font-size: 2rem;
   visibility: ${(props) => props.visibility};

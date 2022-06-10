@@ -1,14 +1,17 @@
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styles/Global";
-import { dark } from "./styles/theme/dark";
+import { light } from "./styles/theme/light";
 import Landing from "./page/Landing";
+import { ThemeContextProvider } from "./Context/themes";
 
 function App() {
   return (
-    <ThemeProvider theme={dark}>
-      <GlobalStyle />
-      <Landing />
-    </ThemeProvider>
+    <ThemeContextProvider>
+      <ThemeProvider theme={light}>
+        <GlobalStyle />
+        <Landing />
+      </ThemeProvider>
+    </ThemeContextProvider>
   );
 }
 

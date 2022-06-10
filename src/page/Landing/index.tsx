@@ -3,11 +3,14 @@ import { Buttons } from "../../components/Buttons";
 import { ButtonsContainer, Calculador, Container, Display } from "./styles";
 
 import * as math from "mathjs";
+import { useTheme } from "../../Context/themes";
 
 const number = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
 const operator = ["*", "/", "+", ".", "-"];
 
 export default function Index() {
+  const { setTheme } = useTheme();
+
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
 
@@ -42,6 +45,23 @@ export default function Index() {
   return (
     <Container>
       <Calculador>
+        <div>
+          <button
+            onClick={() => {
+              setTheme("dark");
+            }}
+          >
+            dark
+          </button>
+          <button
+            onClick={() => {
+              setTheme("light");
+            }}
+          >
+            light
+          </button>
+        </div>
+
         <Display>
           <p>{input}</p>
           {result !== "" ? <p className="result">{result}</p> : ""}

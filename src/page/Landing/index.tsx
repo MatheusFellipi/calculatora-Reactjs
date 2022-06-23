@@ -1,9 +1,17 @@
 import { useState } from "react";
 import { Buttons } from "../../components/Buttons";
-import { ButtonsContainer, Calculador, Container, Display } from "./styles";
+import {
+  ButtonsContainer,
+  Calculador,
+  Container,
+  Display,
+  GroupButtonTheme,
+} from "./styles";
 
 import * as math from "mathjs";
 import { useTheme } from "../../Context/themes";
+import dark from "../../assets/img/dark.png";
+import light from "../../assets/img/light.png";
 
 const number = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
 const operator = ["*", "/", "+", ".", "-"];
@@ -45,22 +53,22 @@ export default function Index() {
   return (
     <Container>
       <Calculador>
-        <div>
+        <GroupButtonTheme>
           <button
             onClick={() => {
               setTheme("dark");
             }}
           >
-            dark
+            <img src={dark} alt="dark" />
           </button>
           <button
             onClick={() => {
               setTheme("light");
             }}
           >
-            light
+            <img src={light} alt="light" />
           </button>
-        </div>
+        </GroupButtonTheme>
 
         <Display>
           <p>{input}</p>

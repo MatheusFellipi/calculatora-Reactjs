@@ -17,12 +17,17 @@ export function Buttons({
   visibility,
   operator,
 }: IPropsButtons) {
+  function isEqual() {
+    return name === "=" || name === "C" ? true : false;
+  }
+
   return (
     <Container>
       <Button
         operator={operator}
         name={name}
         type={type}
+        isEqual={isEqual}
         onClick={handleClick}
         visibility={visibility}
       >
@@ -36,6 +41,7 @@ type ButtonsProps = {
   readonly visibility?: string;
   readonly fontWeight?: string;
   readonly operator?: boolean;
+  readonly isEqual: () => boolean;
 };
 
 const Container = styled.div`
@@ -55,5 +61,7 @@ const Button = styled.button<ButtonsProps>`
 
   background-color: ${({ operator, theme }) =>
     operator ? theme.palette.button.secondary : theme.palette.button.primary};
-  color: ${({ theme }) => theme.palette.text.secondary};
+
+  color: ${({ theme, isEqual }) =>
+    isEqual() ? theme.palette.text.highlight : theme.palette.text.secondary};
 `;

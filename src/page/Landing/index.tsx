@@ -37,18 +37,18 @@ export default function Index() {
     }
   }
 
-  const handleCalculator = () => {
+  function handleCalculator() {
     if (input === "" || operator.includes(input[input.length - 1])) {
       return input;
     } else {
       setResult(math.evaluate(input));
     }
-  };
+  }
 
-  const handleLimpar = () => {
+  function handleLimpar() {
     setInput("");
     setResult("");
-  };
+  }
 
   return (
     <Container>
@@ -70,16 +70,17 @@ export default function Index() {
           </button>
         </GroupButtonTheme>
 
-        <Display>
+        <Display results={result}>
           <p>{input}</p>
           {result !== "" ? <p className="result">{result}</p> : ""}
         </Display>
 
         <ButtonsContainer>
           <section className="buttons">
-            <Buttons name="AC" type="button" handleClick={handleLimpar} />
+            <Buttons name="C" type="button" handleClick={handleLimpar} />
 
             <Buttons
+              operator={true}
               color="#fff"
               type="button"
               name="/"
@@ -101,6 +102,7 @@ export default function Index() {
             </div>
             <div className="operator-number">
               <Buttons
+                operator={true}
                 color="#fff"
                 name="*"
                 type="button"
@@ -108,19 +110,26 @@ export default function Index() {
               />
 
               <Buttons
+                operator={true}
                 color="#fff"
                 name="-"
                 type="button"
                 handleClick={() => handleOperator("-")}
               />
               <Buttons
+                operator={true}
                 color="#fff"
                 name="+"
                 type="button"
                 handleClick={() => handleOperator("+")}
               />
 
-              <Buttons name="=" type="button" handleClick={handleCalculator} />
+              <Buttons
+                operator={true}
+                name="="
+                type="button"
+                handleClick={handleCalculator}
+              />
             </div>
           </section>
         </ButtonsContainer>

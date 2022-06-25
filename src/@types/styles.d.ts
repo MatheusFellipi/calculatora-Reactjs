@@ -18,8 +18,10 @@ declare module "styled-components" {
         secondary: string;
         highlight: string;
       };
-      primary: IPalette;
-      secondary: IPalette;
+      button: {
+        primary: string;
+        secondary: string;
+      };
     };
   }
 }

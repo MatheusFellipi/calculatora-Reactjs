@@ -11,11 +11,11 @@ export const light: DefaultTheme = {
     text: {
       primary: "#505050",
       secondary: "#A9A9A9",
-      highlight: "#D6C0AD",
+      highlight: "#DD8D52",
     },
     button: {
       primary: "#EFEEEF",
-      secondary: "#eaeaeb",
+      secondary: "#fff",
     },
   },
 };

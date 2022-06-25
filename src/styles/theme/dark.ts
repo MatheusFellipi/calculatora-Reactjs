@@ -11,7 +11,7 @@ export const dark: DefaultTheme = {
     text: {
       primary: "#D2D2D2",
       secondary: "#A9A9A9",
-      highlight: "#D6C0AD",
+      highlight: "#DD8D52",
     },
     button: {
       primary: "#1e1f1f",

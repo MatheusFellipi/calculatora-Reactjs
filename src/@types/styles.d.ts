@@ -7,10 +7,16 @@ interface IPalette {
 declare module "styled-components" {
   export interface DefaultTheme {
     background: string;
+    white: string;
+    black: string;
     palette: {
       common: {
-        black: string;
-        white: string;
+        background: string;
+      };
+      text: {
+        primary: string;
+        secondary: string;
+        highlight: string;
       };
       primary: IPalette;
       secondary: IPalette;

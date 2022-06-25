@@ -13,13 +13,9 @@ export const dark: DefaultTheme = {
       secondary: "#A9A9A9",
       highlight: "#D6C0AD",
     },
-    primary: {
-      main: "#333333",
-      contrastText: "#CCCCCC",
-    },
-    secondary: {
-      main: "#709fb0",
-      contrastText: "#ffffff",
+    button: {
+      primary: "#1e1f1f",
+      secondary: "#1e1f1f",
     },
   },
 };

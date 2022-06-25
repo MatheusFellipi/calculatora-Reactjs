@@ -9,17 +9,13 @@ export const light: DefaultTheme = {
       background: "#e8e9e8",
     },
     text: {
-      primary: "#A9A9A9",
-      secondary: "#D2D2D2",
+      primary: "#505050",
+      secondary: "#A9A9A9",
       highlight: "#D6C0AD",
     },
-    primary: {
-      main: "#333333",
-      contrastText: "#CCCCCC",
-    },
-    secondary: {
-      main: "#709fb0",
-      contrastText: "#ffffff",
+    button: {
+      primary: "#EFEEEF",
+      secondary: "#eaeaeb",
     },
   },
 };

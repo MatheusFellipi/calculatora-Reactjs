@@ -7,6 +7,7 @@ interface IPropsButtons {
   visibility?: string;
   color?: string;
   isInput?: boolean;
+  operator?: boolean;
 }
 
 export function Buttons({
@@ -14,10 +15,12 @@ export function Buttons({
   type,
   handleClick,
   visibility,
+  operator,
 }: IPropsButtons) {
   return (
     <Container>
       <Button
+        operator={operator}
         name={name}
         type={type}
         onClick={handleClick}
@@ -32,6 +35,7 @@ export function Buttons({
 type ButtonsProps = {
   readonly visibility?: string;
   readonly fontWeight?: string;
+  readonly operator?: boolean;
 };
 
 const Container = styled.div`
@@ -48,6 +52,8 @@ const Button = styled.button<ButtonsProps>`
   font-size: 2rem;
   visibility: ${(props) => props.visibility};
   font-weight: ${(props) => props.fontWeight};
-  background-color: ${(props) => props.theme.palette.primary.main};
-  color: ${(props) => props.theme.palette.primary.contrastText};
+
+  background-color: ${({ operator, theme }) =>
+    operator ? theme.palette.button.secondary : theme.palette.button.primary};
+  color: ${({ theme }) => theme.palette.text.secondary};
 `;

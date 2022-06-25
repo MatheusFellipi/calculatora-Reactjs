@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 interface IThemeContextData {
   theme: string;
@@ -14,7 +20,17 @@ interface IThemeProviderProps {
 export function ThemeContextProvider({
   children,
 }: IThemeProviderProps): JSX.Element {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => {
+    const calculatorTheme = localStorage.getItem("calculatorTheme");
+    if (calculatorTheme === null) {
+      return "light";
+    }
+    return calculatorTheme;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("calculatorTheme", theme);
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

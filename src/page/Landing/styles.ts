@@ -8,25 +8,6 @@ export const Container = styled.div`
   background: ${(props) => props.theme.background};
 `;
 
-export const GroupButtonTheme = styled.div`
-  display: flex;
-
-  img {
-    width: 20px;
-    height: 20px;
-  }
-
-  button {
-    margin: 0;
-    border: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 25px;
-  }
-`;
-
 export const Calculador = styled.main`
   display: flex;
   flex-direction: column;

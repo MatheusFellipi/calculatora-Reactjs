@@ -1,24 +1,14 @@
 import { useState } from "react";
 import { Buttons } from "../../components/Buttons";
-import {
-  ButtonsContainer,
-  Calculador,
-  Container,
-  Display,
-  GroupButtonTheme,
-} from "./styles";
+import { ButtonsContainer, Calculador, Container, Display } from "./styles";
 
 import * as math from "mathjs";
-import { useTheme } from "../../Context/themes";
-import dark from "../../assets/img/dark.png";
-import light from "../../assets/img/light.png";
+import { SwitchTheme } from "../../components/switchTheme";
 
 const number = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
 const operator = ["*", "/", "+", ".", "-"];
 
 export default function Index() {
-  const { setTheme } = useTheme();
-
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
 
@@ -53,23 +43,7 @@ export default function Index() {
   return (
     <Container>
       <Calculador>
-        <GroupButtonTheme>
-          <button
-            onClick={() => {
-              setTheme("dark");
-            }}
-          >
-            <img src={dark} alt="dark" />
-          </button>
-          <button
-            onClick={() => {
-              setTheme("light");
-            }}
-          >
-            <img src={light} alt="light" />
-          </button>
-        </GroupButtonTheme>
-
+        <SwitchTheme />
         <Display results={result}>
           <p>{input}</p>
           {result !== "" ? <p className="result">{result}</p> : ""}

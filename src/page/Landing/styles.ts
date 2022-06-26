@@ -8,10 +8,21 @@ export const Container = styled.div`
   background: ${(props) => props.theme.background};
 `;
 
+export const ButtonsTheme = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+  padding: 0 1rem;
+  width: 100%;
+`;
+
 export const Calculador = styled.main`
   display: flex;
   flex-direction: column;
-  width: 25rem;
+  width: 30rem;
+  height: 55rem;
+  border-radius: 2rem;
+  padding: 1rem;
   background: ${(props) => props.theme.palette.common.background};
 `;
 
@@ -35,28 +46,16 @@ export const Display = styled.div<DisplayProps>`
     padding: 0rem 1rem 0 0;
     border-radius: 10px;
     :last-child {
-      font-size: 3rem;
+      font-size: 2rem;
     }
   }
 `;
 
 export const ButtonsContainer = styled.div`
   display: flex;
-  flex-direction: column;
-
-  .buttons {
-    display: flex;
-    justify-content: flex-end;
-  }
-  .operator-number {
-    display: flex;
-    flex-direction: column;
-  }
-  .btn-number {
-    display: flex;
-    flex-wrap: wrap;
-    div:nth-last-child(2) {
-      width: 11rem;
-    }
+  flex-wrap: wrap;
+  justify-content: center;
+  div:nth-last-child(3) {
+    width: 13rem;
   }
 `;

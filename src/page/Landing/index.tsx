@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Buttons } from "../../components/Buttons";
-import { ButtonsContainer, Calculador, Container, Display } from "./styles";
+import {
+  ButtonsContainer,
+  Calculador,
+  Container,
+  Display,
+  ButtonsTheme,
+} from "./styles";
 
 import * as math from "mathjs";
 import { SwitchTheme } from "../../components/switchTheme";
 
-const number = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
 const operator = ["*", "/", "+", ".", "-"];
 
 export default function Index() {
@@ -43,71 +48,105 @@ export default function Index() {
   return (
     <Container>
       <Calculador>
-        <SwitchTheme />
+        <ButtonsTheme>
+          <SwitchTheme />
+        </ButtonsTheme>
+
         <Display results={result}>
           <p>{input}</p>
           {result !== "" ? <p className="result">{result}</p> : ""}
         </Display>
 
         <ButtonsContainer>
-          <section className="buttons">
-            <Buttons name="C" type="button" handleClick={handleLimpar} />
-            <Buttons name="+/-" type="button" />
-            <Buttons name="%" type="button" />
+          <Buttons name="C" type="button" handleClick={handleLimpar} />
+          <Buttons name="+/-" type="button" />
+          <Buttons name="%" type="button" />
+          <Buttons
+            operator={true}
+            color="#fff"
+            type="button"
+            name="/"
+            handleClick={() => handleOperator("/")}
+          />
+          <Buttons
+            type="button"
+            name={"7"}
+            handleClick={() => handleInsertNum("7")}
+          />
+          <Buttons
+            type="button"
+            name={"8"}
+            handleClick={() => handleInsertNum("8")}
+          />
+          <Buttons
+            type="button"
+            name={"9"}
+            handleClick={() => handleInsertNum("9")}
+          />
+          <Buttons
+            operator={true}
+            color="#fff"
+            name="*"
+            type="button"
+            handleClick={() => handleOperator("*")}
+          />
+          <Buttons
+            type="button"
+            name={"7"}
+            handleClick={() => handleInsertNum("7")}
+          />
+          <Buttons
+            type="button"
+            name={"8"}
+            handleClick={() => handleInsertNum("8")}
+          />
+          <Buttons
+            type="button"
+            name={"9"}
+            handleClick={() => handleInsertNum("9")}
+          />
+          <Buttons
+            operator={true}
+            color="#fff"
+            name="*"
+            type="button"
+            handleClick={() => handleOperator("*")}
+          />
+          <Buttons
+            type="button"
+            name={"7"}
+            handleClick={() => handleInsertNum("7")}
+          />
+          <Buttons
+            type="button"
+            name={"8"}
+            handleClick={() => handleInsertNum("8")}
+          />
+          <Buttons
+            type="button"
+            name={"9"}
+            handleClick={() => handleInsertNum("9")}
+          />
+          <Buttons
+            operator={true}
+            color="#fff"
+            name="*"
+            type="button"
+            handleClick={() => handleOperator("*")}
+          />
+          <Buttons
+            type="button"
+            name={"0"}
+            handleClick={() => handleInsertNum("0")}
+          />
 
-            <Buttons
-              operator={true}
-              color="#fff"
-              type="button"
-              name="/"
-              handleClick={() => handleOperator("/")}
-            />
-          </section>
-
-          <section className="buttons">
-            <div className="btn-number">
-              {number.map((num) => (
-                <Buttons
-                  key={num}
-                  type="button"
-                  name={num.toString()}
-                  handleClick={() => handleInsertNum(num.toString())}
-                />
-              ))}
-              <Buttons name="." type="button" />
-            </div>
-            <div className="operator-number">
-              <Buttons
-                operator={true}
-                color="#fff"
-                name="*"
-                type="button"
-                handleClick={() => handleOperator("*")}
-              />
-
-              <Buttons
-                operator={true}
-                color="#fff"
-                name="-"
-                type="button"
-                handleClick={() => handleOperator("-")}
-              />
-              <Buttons
-                operator={true}
-                color="#fff"
-                name="+"
-                type="button"
-                handleClick={() => handleOperator("+")}
-              />
-
-              <Buttons
-                operator={true}
-                name="="
-                type="button"
-                handleClick={handleCalculator}
-              />
-            </div>
-          </section>
+          <Buttons name="." type="button" />
+          <Buttons
+            operator={true}
+            name="="
+            type="button"
+            handleClick={handleCalculator}
+          />
         </ButtonsContainer>
       </Calculador>
     </Container>

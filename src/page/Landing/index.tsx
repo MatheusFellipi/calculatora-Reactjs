@@ -53,6 +53,7 @@ export default function Index() {
           <section className="buttons">
             <Buttons name="C" type="button" handleClick={handleLimpar} />
             <Buttons name="+/-" type="button" />
+            <Buttons name="%" type="button" />
 
             <Buttons
               operator={true}

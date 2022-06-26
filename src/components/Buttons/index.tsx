@@ -45,8 +45,8 @@ type ButtonsProps = {
 };
 
 const Container = styled.div`
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 6rem;
   margin: 0.5rem;
 `;
 

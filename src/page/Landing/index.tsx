@@ -92,47 +92,47 @@ export default function Index() {
           />
           <Buttons
             type="button"
-            name={"7"}
-            handleClick={() => handleInsertNum("7")}
+            name={"4"}
+            handleClick={() => handleInsertNum("4")}
           />
           <Buttons
             type="button"
-            name={"8"}
-            handleClick={() => handleInsertNum("8")}
+            name={"5"}
+            handleClick={() => handleInsertNum("5")}
           />
           <Buttons
             type="button"
-            name={"9"}
-            handleClick={() => handleInsertNum("9")}
-          />
-          <Buttons
-            operator={true}
-            color="#fff"
-            name="*"
-            type="button"
-            handleClick={() => handleOperator("*")}
-          />
-          <Buttons
-            type="button"
-            name={"7"}
-            handleClick={() => handleInsertNum("7")}
-          />
-          <Buttons
-            type="button"
-            name={"8"}
-            handleClick={() => handleInsertNum("8")}
-          />
-          <Buttons
-            type="button"
-            name={"9"}
-            handleClick={() => handleInsertNum("9")}
+            name={"6"}
+            handleClick={() => handleInsertNum("6")}
           />
           <Buttons
             operator={true}
             color="#fff"
-            name="*"
+            name="-"
             type="button"
-            handleClick={() => handleOperator("*")}
+            handleClick={() => handleOperator("-")}
+          />
+          <Buttons
+            type="button"
+            name={"1"}
+            handleClick={() => handleInsertNum("1")}
+          />
+          <Buttons
+            type="button"
+            name={"2"}
+            handleClick={() => handleInsertNum("2")}
+          />
+          <Buttons
+            type="button"
+            name={"3"}
+            handleClick={() => handleInsertNum("3")}
+          />
+          <Buttons
+            operator={true}
+            color="#fff"
+            name="+"
+            type="button"
+            handleClick={() => handleOperator("+")}
           />
           <Buttons
             type="button"

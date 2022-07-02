@@ -15,7 +15,7 @@ export const Calculador = styled.main`
   width: 95%;
   max-width: 550px;
   height: 95%;
-  max-height: 770px;
+  max-height: 870px;
   border-radius: 2rem;
 `;
 
@@ -52,10 +52,17 @@ export const Display = styled.div<DisplayProps>`
 `;
 
 export const ButtonsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  div:nth-last-child(3) {
-    width: 13rem;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  width: 100%;
+  height: 100%;
+  padding: 0.2rem;
+  grid-row-gap: 0.1rem;
+  .column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
   }
 `;

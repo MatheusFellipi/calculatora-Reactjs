@@ -8,22 +8,23 @@ export const Container = styled.div`
   background: ${(props) => props.theme.background};
 `;
 
+export const Calculador = styled.main`
+  display: flex;
+  flex-direction: column;
+  background: ${(props) => props.theme.palette.common.background};
+  width: 95%;
+  max-width: 550px;
+  height: 95%;
+  max-height: 770px;
+  border-radius: 2rem;
+`;
+
 export const ButtonsTheme = styled.div`
   display: flex;
   justify-content: flex-end;
   margin: 1rem;
   padding: 0 1rem;
-  width: 100%;
-`;
-
-export const Calculador = styled.main`
-  display: flex;
-  flex-direction: column;
-  width: 30rem;
-  height: 55rem;
-  border-radius: 2rem;
-  padding: 1rem;
-  background: ${(props) => props.theme.palette.common.background};
+  width: 90%;
 `;
 
 type DisplayProps = {
@@ -36,15 +37,14 @@ export const Display = styled.div<DisplayProps>`
   justify-content: center;
   color: ${(props) => props.theme.palette.text.primary};
   width: 100%;
-  height: 120px;
-  margin: 2rem 0rem 2rem 0.8rem;
+  height: 95%;
+  max-height: 200px;
+
   p {
-    max-width: 96%;
+    max-width: 90%;
     overflow: auto;
-    font-size: ${({ results }) => (results !== "" ? "15px" : "30px")};
+    font-size: ${({ results }) => (results !== "" ? "1rem" : "2rem")};
     text-align: end;
-    padding: 0rem 1rem 0 0;
-    border-radius: 10px;
     :last-child {
       font-size: 2rem;
     }

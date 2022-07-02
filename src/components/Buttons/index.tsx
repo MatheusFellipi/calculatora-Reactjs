@@ -45,9 +45,11 @@ type ButtonsProps = {
 };
 
 const Container = styled.div`
-  width: 6rem;
-  height: 6rem;
-  margin: 0.5rem;
+  width: 100%;
+  height: 100%;
+  max-width: 6rem;
+  max-height: 6rem;
+  margin: 0.1rem;
 `;
 
 const Button = styled.button<ButtonsProps>`

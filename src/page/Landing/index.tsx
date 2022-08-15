@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Buttons } from "../../components/Buttons";
 import {
   ButtonsContainer,
@@ -10,16 +10,33 @@ import {
 
 import * as math from "mathjs";
 import { SwitchTheme } from "../../components/switchTheme";
+import { useStorage } from "../../hook/useStorage";
 
 const operator = ["*", "/", "+", ".", "-"];
 
 export default function Index() {
+  const { getItem, setItem } = useStorage();
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
+  const [history, setHistory] = useState<any[]>(() => {
+    const hisStringify = getItem("calculator:history", "local");
+
+    if (hisStringify !== undefined) {
+      const hitParse = JSON.parse(hisStringify);
+      return hitParse;
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    setItem("calculator:history", JSON.stringify(history), "local");
+  }, [history, setItem]);
 
   function handleInsertNum(val: string) {
     setInput(input + val);
   }
+
+  console.log(history);
 
   function handleOperator(val: string) {
     if (
@@ -36,7 +53,13 @@ export default function Index() {
     if (input === "" || operator.includes(input[input.length - 1])) {
       return input;
     } else {
+      const historyObj = {
+        calcular: input,
+        result: math.evaluate(input),
+      };
+
       setResult(math.evaluate(input));
+      setHistory([...history, historyObj]);
     }
   }
 
